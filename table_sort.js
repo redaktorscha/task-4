@@ -37,7 +37,7 @@ for (i = 0; i < catsArray.length; i++) {
     }
     tbody.appendChild(row);
 }
-
+/*
 const propSorting = (prop) => {
     return function (x, y) {
         return x[prop] > y[prop] ? 1 : x[prop] < y[prop] ? -1 : 0;
@@ -53,7 +53,7 @@ let sortColors = propSorting('color');
 let sortGenders = propSorting('gender');
 let sortAges = propSorting('age');*/
 
-const propRevSorting = (prop) => {
+/*const propRevSorting = (prop) => {
     return function (a, b) {
         return b[prop] > a[prop] ? 1 : b[prop] < a[prop] ? -1 : 0;
     }
