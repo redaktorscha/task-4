@@ -6,20 +6,30 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Sorting Table</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-ﬁt=no">
-    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="table.css">
 </head>
 
 <body>
     <div class='container'>
-        <table>
+        <table id='table'>
             <div class='table-header'>cat sorting</div>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Weight</th>
-                    <th>Color</th>
-                    <th>Gender</th>
-                    <th>Age</th>
+                    <th>Name
+                        <button class='btn' id='name'></button>
+                    </th>
+                    <th>Weight
+                        <button class='btn' id='weight'></button>
+                    </th>
+                    <th>Color
+                        <button class='btn' id='color'></button>
+                    </th>
+                    <th>Gender
+                        <button class='btn' id='gender'></button>
+                    </th>
+                    <th>Age
+                        <button class='btn' id='age'></button>
+                    </th>
                 </tr>
             </thead>
             <tbody id='tbody'></tbody>
