@@ -6,4 +6,11 @@
 
 .shadow {
   box-shadow: inset 25px 0px 25px -25px green, inset -25px 0px 25px -25px green;
+  
+}
+
+
+
+td {
+  border: 1 px solid green;
 }

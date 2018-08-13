@@ -114,13 +114,67 @@ const createTable = () => {
 }
 
 
-
-const highlighter_names = () => {
-    let tbody = document.getElementById('tbody');
-    for (let k = 0; k < tbody.rows.length; k++) {
-        tbody.rows[k].cells[0].setAttribute('class', 'shadow')
+const Onclick = (e) => {
+    let btnId = e.target.id;
+    switch (btnId) {
+      case 'name':
+        sortTable ('name');
+         highlighterName();
+        break;
+      case 'weight':
+        sortTable ('weight');
+        highlighterWeight();
+        break;
+      case 'color':
+        sortTable ('color');
+        highlighterColor();
+        break;
+      case 'gender':
+        sortTable ('gender');
+        highlighterGender();
+        break;
+      case 'age':
+        sortTable ('age');
+        highlighterAge();
+        break;
     }
-}
+    }
+    
+
+    const highlighterName = () => {
+        let tbody = document.getElementById('tbody');
+       for (let k=0; k<tbody.rows.length; k++) {
+         tbody.rows[k].cells[0].setAttribute('class', 'shadow')
+       }
+         }
+       
+       const highlighterWeight = () => {
+        let tbody = document.getElementById('tbody');
+       for (let k=0; k<tbody.rows.length; k++) {
+         tbody.rows[k].cells[1].setAttribute('class', 'shadow')
+       }
+         }
+       const highlighterColor = () => {
+        let tbody = document.getElementById('tbody');
+       for (let k=0; k<tbody.rows.length; k++) {
+         tbody.rows[k].cells[2].setAttribute('class', 'shadow')
+       }
+         }
+       const highlighterGender = () => {
+        let tbody = document.getElementById('tbody');
+       for (let k=0; k<tbody.rows.length; k++) {
+         tbody.rows[k].cells[3].setAttribute('class', 'shadow')
+       }
+         }
+       const highlighterAge = () => {
+        let tbody = document.getElementById('tbody');
+       for (let k=0; k<tbody.rows.length; k++) {
+         tbody.rows[k].cells[4].setAttribute('class', 'shadow')
+       }
+         }
+       
+       
+       
 
 /*
 const onClick = () => {
@@ -131,7 +185,7 @@ const onClick = () => {
 }*/
 
 
-
+/*
 
 let btn_name = document.getElementById('name');
 btn_name.addEventListener('click', function () {
@@ -159,9 +213,10 @@ btn_age.addEventListener('click', function () {
 });
 
 let header1 = document.querySelector('#header1')
-header1.addEventListener ('click', highlighter_names);
+header1.addEventListener ('click', highlighter_names); */
 
-
+let thead = document.querySelector('#thead');
+thead.addEventListener('click', Onclick);
 
 createTable();
 
