@@ -1,5 +1,9 @@
 .btn {
-    width: 20px;
-    height: 20px;
-    background-color: green;
-  }
+  width: 20px;
+  height: 20px;
+  background-color: green;
+}
+
+.shadow {
+  box-shadow: inset 25px 0px 25px -25px green, inset -25px 0px 25px -25px green;
+}

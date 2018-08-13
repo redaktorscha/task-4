@@ -113,6 +113,15 @@ const createTable = () => {
     }
 }
 
+
+
+const highlighter_names = () => {
+    let tbody = document.getElementById('tbody');
+    for (let k = 0; k < tbody.rows.length; k++) {
+        tbody.rows[k].cells[0].setAttribute('class', 'shadow')
+    }
+}
+
 /*
 const onClick = () => {
   let buttons = document.querySelectorAll('btn');
@@ -120,6 +129,8 @@ const onClick = () => {
     buttons[i].addEventListener('click', sortTable)
   }
 }*/
+
+
 
 
 let btn_name = document.getElementById('name');
@@ -146,6 +157,11 @@ let btn_age = document.getElementById('age');
 btn_age.addEventListener('click', function () {
     sortTable("age")
 });
+
+let header1 = document.querySelector('#header1')
+header1.addEventListener ('click', highlighter_names);
+
+
 
 createTable();
 
