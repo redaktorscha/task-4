@@ -117,64 +117,73 @@ const createTable = () => {
 const Onclick = (e) => {
     let btnId = e.target.id;
     switch (btnId) {
-      case 'name':
-        sortTable ('name');
-         highlighterName();
-        break;
-      case 'weight':
-        sortTable ('weight');
-        highlighterWeight();
-        break;
-      case 'color':
-        sortTable ('color');
-        highlighterColor();
-        break;
-      case 'gender':
-        sortTable ('gender');
-        highlighterGender();
-        break;
-      case 'age':
-        sortTable ('age');
-        highlighterAge();
-        break;
+        case 'name':
+            sortTable('name');
+            highlighter([0]);
+            break;
+        case 'weight':
+            sortTable('weight');
+            highlighter(1);
+            break;
+        case 'color':
+            sortTable('color');
+            highlighter(2);
+            break;
+        case 'gender':
+            sortTable('gender');
+            highlighter(3);
+            break;
+        case 'age':
+            sortTable('age');
+            highlighter(4);
+            break;
     }
-    }
-    
+}
 
-    const highlighterName = () => {
-        let tbody = document.getElementById('tbody');
-       for (let k=0; k<tbody.rows.length; k++) {
-         tbody.rows[k].cells[0].setAttribute('class', 'shadow')
-       }
-         }
-       
-       const highlighterWeight = () => {
-        let tbody = document.getElementById('tbody');
-       for (let k=0; k<tbody.rows.length; k++) {
-         tbody.rows[k].cells[1].setAttribute('class', 'shadow')
-       }
-         }
-       const highlighterColor = () => {
-        let tbody = document.getElementById('tbody');
-       for (let k=0; k<tbody.rows.length; k++) {
-         tbody.rows[k].cells[2].setAttribute('class', 'shadow')
-       }
-         }
-       const highlighterGender = () => {
-        let tbody = document.getElementById('tbody');
-       for (let k=0; k<tbody.rows.length; k++) {
-         tbody.rows[k].cells[3].setAttribute('class', 'shadow')
-       }
-         }
-       const highlighterAge = () => {
-        let tbody = document.getElementById('tbody');
-       for (let k=0; k<tbody.rows.length; k++) {
-         tbody.rows[k].cells[4].setAttribute('class', 'shadow')
-       }
-         }
-       
-       
-       
+const highlighter = (index) => {
+    let tbody = document.getElementById('tbody');
+    for (let j = 0; j < tbody.rows.length; j++) {
+        tbody.rows[j].cells[index].setAttribute('class', 'shadow');
+    }
+}
+
+/*
+
+
+const highlighterName = () => {
+    let tbody = document.getElementById('tbody');
+    for (let k = 0; k < tbody.rows.length; k++) {
+        tbody.rows[k].cells[0].setAttribute('class', 'shadow')
+    }
+}
+
+const highlighterWeight = () => {
+    let tbody = document.getElementById('tbody');
+    for (let k = 0; k < tbody.rows.length; k++) {
+        tbody.rows[k].cells[1].setAttribute('class', 'shadow')
+    }
+}
+const highlighterColor = () => {
+    let tbody = document.getElementById('tbody');
+    for (let k = 0; k < tbody.rows.length; k++) {
+        tbody.rows[k].cells[2].setAttribute('class', 'shadow')
+    }
+}
+const highlighterGender = () => {
+    let tbody = document.getElementById('tbody');
+    for (let k = 0; k < tbody.rows.length; k++) {
+        tbody.rows[k].cells[3].setAttribute('class', 'shadow')
+    }
+}
+const highlighterAge = () => {
+    let tbody = document.getElementById('tbody');
+    for (let k = 0; k < tbody.rows.length; k++) {
+        tbody.rows[k].cells[4].setAttribute('class', 'shadow')
+    }
+}
+
+*/
+
 
 /*
 const onClick = () => {
