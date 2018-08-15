@@ -1,5 +1,5 @@
 let catsArray = [];
-let sorted = false;
+let sorted = {};
 
 
 const cat = function (cat_name, cat_weight, cat_color, cat_gender, cat_age) {
@@ -46,16 +46,16 @@ const propRevSorting = (arr, prop) => {
 //sortRevAges = propRevSorting('age');
 
 
-let cat1 = new cat('Thomas', 10, 'grey', 'male', 8);
-cat2 = new cat('Kitty', 5, 'red', 'female', 2);
-cat3 = new cat('Max', 6, 'white', 'male', 12);
-cat4 = new cat('Angel', 3, 'black', 'male', 1);
-cat5 = new cat('Bella', 4, 'white', 'female', 5);
-cat6 = new cat('Tabby', 7, 'whiskas', 'male', 2);
-cat7 = new cat('Daisy', 3, 'beige', 'female', 5);
-cat8 = new cat('Misty', 5, 'grey', 'female', 3);
-cat9 = new cat('Spotty', 8, 'spotted', 'male', 6);
-cat10 = new cat('Tiger', 9, 'red', 'male', 4);
+let cat1 = new cat('Thomas', 10, 'grey', 'male', 8),
+    cat2 = new cat('Kitty', 5, 'red', 'female', 2),
+    cat3 = new cat('Max', 6, 'white', 'male', 12),
+    cat4 = new cat('Angel', 3, 'black', 'male', 1),
+    cat5 = new cat('Bella', 4, 'white', 'female', 5),
+    cat6 = new cat('Tabby', 7, 'whiskas', 'male', 2),
+    cat7 = new cat('Daisy', 3, 'beige', 'female', 5),
+    cat8 = new cat('Misty', 5, 'grey', 'female', 3),
+    cat9 = new cat('Spotty', 8, 'spotted', 'male', 6),
+    cat10 = new cat('Tiger', 9, 'red', 'male', 4);
 
 
 
@@ -72,16 +72,18 @@ const removeTable = () => {
 
 const sortTable = (p) => {
     removeTable();
-    if (sorted === false) {
+    if (sorted.prop !== p || sorted.state === false) {
         propSorting(catsArray, p);
-        sorted = true;
+        sorted.state = true;
     } else {
         propRevSorting(catsArray, p);
-        sorted = false;
+        sorted.state = false;
     }
+    sorted.prop = p;
     createTable();
 
 }
+
 
 
 /*
@@ -119,7 +121,7 @@ const Onclick = (e) => {
     switch (btnId) {
         case 'name':
             sortTable('name');
-            highlighter([0]);
+            highlighter(0);
             break;
         case 'weight':
             sortTable('weight');
