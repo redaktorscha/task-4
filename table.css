@@ -21,14 +21,14 @@ body {
   border-radius: 50%;
   outline: none;
   background-image: url(paw_up.png);
-  background-size: 28px 28px;
+  background-size: 25px 25px;
   background-repeat: no-repeat;
 }
 
 .btn:hover {
   cursor: pointer;
   background-image: url(paw_up1.png);
-  background-size: 28px 28px;
+  background-size: 25px 25px;
   background-repeat: no-repeat;
 }
 
@@ -37,11 +37,25 @@ body {
 }
 
 .btn_asc {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  outline: none;
   background-image: url(paw_asc.png);
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+ 
 }
 
 .btn_desc {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  outline: none;
   background-image: url(paw_desc.png);
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  
 }
 
 .shadow {
@@ -64,6 +78,8 @@ table
   border-collapse:collapse;
   text-align: left;
   background-color: #fff;
+  font-family: Bodoni;
+  font-weight: normal;
 }
 
 #thead  {

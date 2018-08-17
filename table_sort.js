@@ -2,6 +2,7 @@ let catsArray = [];
 let sorted = {};
 
 
+
 const cat = function (cat_name, cat_weight, cat_color, cat_gender, cat_age) {
     this.name = cat_name;
     this.weight = cat_weight;
@@ -72,18 +73,17 @@ const removeTable = () => {
 
 const sortTable = (p) => {
     removeTable();
-    if (sorted.prop !== p || sorted.state === false) {
-        propSorting(catsArray, p);
+    if (sorted.prop !== p || sorted.state === false) {        
+        propSorting(catsArray, p);       
         sorted.state = true;
     } else {
-        propRevSorting(catsArray, p);
+        propRevSorting(catsArray, p);   
         sorted.state = false;
     }
     sorted.prop = p;
     createTable();
 
 }
-
 
 
 /*
@@ -122,22 +122,27 @@ const Onclick = (e) => {
         case 'name':
             sortTable('name');
             highlighter(0);
+            //picChange('name');
             break;
         case 'weight':
             sortTable('weight');
             highlighter(1);
+            //picChange('weight');
             break;
         case 'color':
             sortTable('color');
             highlighter(2);
+            //picChange('color');
             break;
         case 'gender':
             sortTable('gender');
             highlighter(3);
+            //picChange('gender');
             break;
         case 'age':
             sortTable('age');
             highlighter(4);
+            //picChange('age');
             break;
     }
 }
@@ -148,6 +153,16 @@ const highlighter = (index) => {
         tbody.rows[j].cells[index].setAttribute('class', 'shadow');
     }
 }
+
+/*const picChange = (idx) => {
+    let buttons = document.getElementsByClassName('btn');
+    buttons[idx].setAttribute('class', 'btn_asc');
+    buttons[idx].onclick = function() {
+        buttons[idx].getAttribute('class', 'btn_asc') ?  buttons[idx].setAttribute('class', 'btn_desc') : buttons[idx].setAttribute('class', 'btn_asc')
+    } 
+
+}
+
 
 /*
 
@@ -228,6 +243,7 @@ header1.addEventListener ('click', highlighter_names); */
 
 let thead = document.querySelector('#thead');
 thead.addEventListener('click', Onclick);
+
 
 createTable();
 
