@@ -1,16 +1,92 @@
-.btn {
-  width: 20px;
-  height: 20px;
-  background-color: green;
-}
-
-.shadow {
-  box-shadow: inset 25px 0px 25px -25px green, inset -25px 0px 25px -25px green;
+body {
+  background-color: #fff;
+  /*background-image: url(Cat-paw-printing-md.png);
+  background-size: 150px;
+  background-repeat: no-repeat;
+  background-position: 50px;*/
   
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
 
+.btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  outline: none;
+  background-image: url(paw_up.png);
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+}
 
-td {
-  border: 1 px solid green;
+.btn:hover {
+  cursor: pointer;
+  background-image: url(paw_up1.png);
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+}
+
+.btn:focus {
+  border-color: rgb(170, 134, 204);
+}
+
+.btn_asc {
+  background-image: url(paw_asc.png);
+}
+
+.btn_desc {
+  background-image: url(paw_desc.png);
+}
+
+.shadow {
+  box-shadow: inset 25px 0px 25px -25px #955097, inset -25px 0px 25px -25px #955097;
+  
+}
+
+tbody tr:hover {
+  cursor: pointer;
+  background-color:rgb(214, 175, 204);
+}
+
+td
+{
+  border: 0;
+  
+}
+table 
+{
+  border-collapse:collapse;
+  text-align: left;
+  background-color: #fff;
+}
+
+#thead  {
+  font-family: BodoniMT;
+  font-weight: bold;
+  font-size: 20px;  
+}
+
+.table-header {
+  font-family: Bodoni;
+  font-weight: bold;
+  font-style: italic;
+  display: flex;
+  padding: 24px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+  text-shadow: -1px -1px 1px #361e36;
+  color: #9a9a9a;
+}
+
+@font-face {
+  font-family: "Bodoni";
+  src: url('BodoniMT.ttf')format('truetype'), url('BOD_BI.TTF.ttf')format('truetype'), url('BOD_B.ttf')format('truetype'), url('BOD_I.ttf')format('truetype');
 }
