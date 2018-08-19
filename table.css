@@ -20,16 +20,18 @@ body {
   height: 30px;
   border-radius: 50%;
   outline: none;
-  background-image: url(paw_up.png);
+  background-color: #9a9a9a;
+  /*background-image: url(paw_up.png);
   background-size: 25px 25px;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;*/
 }
 
 .btn:hover {
   cursor: pointer;
-  background-image: url(paw_up1.png);
+  background-color: #fff;
+  /*background-image: url(paw_up1.png);
   background-size: 25px 25px;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;*/
 }
 
 .btn:focus {
@@ -68,13 +70,11 @@ tbody tr:hover {
   background-color:rgb(214, 175, 204);
 }
 
-td
-{
-  border: 0;
-  
+td {
+  border: 0;  
 }
-table 
-{
+
+table {
   border-collapse:collapse;
   text-align: left;
   background-color: #fff;

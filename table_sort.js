@@ -32,20 +32,6 @@ const propRevSorting = (arr, prop) => {
     );
 }
 
-//const sortNames = () => {propSorting(catsArray, 'name')} 
-
-//sortWeights = propSorting('weight');
-//sortColors = propSorting('color');
-//sortGenders = propSorting('gender');
-//sortAges = propSorting('age');
-
-
-//sortRevNames = propRevSorting(catsArray, 'name');
-//sortRevWeights = propRevSorting('weight');
-//sortRevColors = propRevSorting('color');
-//sortRevGenders = propRevSorting('gender');
-//sortRevAges = propRevSorting('age');
-
 
 let cat1 = new cat('Thomas', 10, 'grey', 'male', 8),
     cat2 = new cat('Kitty', 5, 'red', 'female', 2),
@@ -59,9 +45,6 @@ let cat1 = new cat('Thomas', 10, 'grey', 'male', 8),
     cat10 = new cat('Tiger', 9, 'red', 'male', 4);
 
 
-
-//propSorting(catsArray, 'name');
-//propSorting(catsArray, 'color');
 const removeTable = () => {
     let el = document.getElementById('tbody');
     el.remove();
@@ -73,32 +56,21 @@ const removeTable = () => {
 
 const sortTable = (p) => {
     removeTable();
-    if (sorted.prop !== p || sorted.state === false) {        
-        propSorting(catsArray, p);       
+    if (sorted.prop !== p || sorted.state === false) {
+        propSorting(catsArray, p);
+        imgToggle(p, 'btn', 'btn_asc');
         sorted.state = true;
     } else {
-        propRevSorting(catsArray, p);   
+        propRevSorting(catsArray, p);
+        imgToggle(p, 'btn_asc', 'btn_desc');
         sorted.state = false;
     }
     sorted.prop = p;
     createTable();
-
+    clearButtons(p);
 }
 
 
-/*
-const sortTable_names = () => {
-  removeTable();
-  propSorting(catsArray, 'name');
-  createTable();
-}
-
-const sortTable_weights = () => {
-  removeTable();
-  propSorting(catsArray, 'weight');
-  createTable();
-} 
-*/
 
 const createTable = () => {
     for (i = 0; i < catsArray.length; i++) {
@@ -116,33 +88,28 @@ const createTable = () => {
 }
 
 
-const Onclick = (e) => {
+const onClick = (e) => {
     let btnId = e.target.id;
     switch (btnId) {
         case 'name':
             sortTable('name');
-            highlighter(0);
-            //picChange('name');
+            highlighter(0);            
             break;
         case 'weight':
             sortTable('weight');
             highlighter(1);
-            //picChange('weight');
             break;
         case 'color':
             sortTable('color');
             highlighter(2);
-            //picChange('color');
             break;
         case 'gender':
             sortTable('gender');
             highlighter(3);
-            //picChange('gender');
             break;
         case 'age':
             sortTable('age');
             highlighter(4);
-            //picChange('age');
             break;
     }
 }
@@ -154,121 +121,27 @@ const highlighter = (index) => {
     }
 }
 
-/*const picChange = (idx) => {
-    let buttons = document.getElementsByClassName('btn');
-    buttons[idx].setAttribute('class', 'btn_asc');
-    buttons[idx].onclick = function() {
-        buttons[idx].getAttribute('class', 'btn_asc') ?  buttons[idx].setAttribute('class', 'btn_desc') : buttons[idx].setAttribute('class', 'btn_asc')
-    } 
+const imgToggle = (id, src1, src2) => {
+    let buttons = document.getElementsByTagName('button');
+    if (buttons[id].getAttribute('class', src1)) {
+        buttons[id].setAttribute('class', src2)
+    };
 
 }
 
-
-/*
-
-
-const highlighterName = () => {
-    let tbody = document.getElementById('tbody');
-    for (let k = 0; k < tbody.rows.length; k++) {
-        tbody.rows[k].cells[0].setAttribute('class', 'shadow')
+const clearButtons = (nm) => {
+    let buttons = document.getElementsByTagName('button');
+    for (i = 0; i < buttons.length; i++) {
+        if (buttons[i].id !== nm) {
+            buttons[i].setAttribute('class', 'btn');
+        }
     }
 }
 
-const highlighterWeight = () => {
-    let tbody = document.getElementById('tbody');
-    for (let k = 0; k < tbody.rows.length; k++) {
-        tbody.rows[k].cells[1].setAttribute('class', 'shadow')
-    }
-}
-const highlighterColor = () => {
-    let tbody = document.getElementById('tbody');
-    for (let k = 0; k < tbody.rows.length; k++) {
-        tbody.rows[k].cells[2].setAttribute('class', 'shadow')
-    }
-}
-const highlighterGender = () => {
-    let tbody = document.getElementById('tbody');
-    for (let k = 0; k < tbody.rows.length; k++) {
-        tbody.rows[k].cells[3].setAttribute('class', 'shadow')
-    }
-}
-const highlighterAge = () => {
-    let tbody = document.getElementById('tbody');
-    for (let k = 0; k < tbody.rows.length; k++) {
-        tbody.rows[k].cells[4].setAttribute('class', 'shadow')
-    }
-}
-
-*/
-
-
-/*
-const onClick = () => {
-  let buttons = document.querySelectorAll('btn');
-  for (i = 0; i<buttons.length; i++) {
-    buttons[i].addEventListener('click', sortTable)
-  }
-}*/
-
-
-/*
-
-let btn_name = document.getElementById('name');
-btn_name.addEventListener('click', function () {
-    sortTable("name")
-});
-
-let btn_weight = document.getElementById('weight');
-btn_weight.addEventListener('click', function () {
-    sortTable("weight")
-});
-
-let btn_color = document.getElementById('color');
-btn_color.addEventListener('click', function () {
-    sortTable("color")
-});
-
-let btn_gender = document.getElementById('gender');
-btn_gender.addEventListener('click', function () {
-    sortTable("gender")
-});
-
-let btn_age = document.getElementById('age');
-btn_age.addEventListener('click', function () {
-    sortTable("age")
-});
-
-let header1 = document.querySelector('#header1')
-header1.addEventListener ('click', highlighter_names); */
 
 let thead = document.querySelector('#thead');
-thead.addEventListener('click', Onclick);
+thead.addEventListener('click', onClick);
 
 
 createTable();
 
-
-
-
-//const propSorting = (prop) => (x, y) => {return +(x[prop] > y[prop]) || +(x[prop] === y[prop]) - 1};
-//const propRevSorting = (prop) => (a, b) => {return +(a[prop] < b[prop]) || +(b[prop] === a[prop]) -1};
-
-/*
-let sortNames = propSorting('name');
-   
-
-
-let sortRevNames = propRevSorting('name');
-   
-/*
-const propSorting = (prop) => {
-    return function (x, y) {
-        return x[prop] > y[prop] ? 1 : x[prop] < y[prop] ? -1 : 0;
-    }
-}
-
-const propRevSorting = (prop) => {
-    return function (a, b) {
-        return b[prop] > a[prop] ? 1 : b[prop] < a[prop] ? -1 : 0;
-    }
-}*/
