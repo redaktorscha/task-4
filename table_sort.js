@@ -2,7 +2,8 @@ let catsArray = [];
 let sorted = {};
 
 
-
+// создает массив из объектов
+// @param cat_name, cat_weight, cat_color, cat_gender, cat_age String/Number свойства объектов
 const cat = function (cat_name, cat_weight, cat_color, cat_gender, cat_age) {
     this.name = cat_name;
     this.weight = cat_weight;
@@ -15,7 +16,8 @@ const cat = function (cat_name, cat_weight, cat_color, cat_gender, cat_age) {
     this.toArray();
 }
 
-
+// сортировка массива по возрастанию
+// @param arr Object сортируемый массив, prop String ключ свойства объекта, по которому производится сортировка
 const propSorting = (arr, prop) => {
     arr.sort(
         function (x, y) {
@@ -24,6 +26,8 @@ const propSorting = (arr, prop) => {
     );
 }
 
+// сортировка массива по убыванию
+// @param arr Object сортируемый массив, prop String ключ свойства объекта, по которому производится сортировка
 const propRevSorting = (arr, prop) => {
     arr.sort(
         function (a, b) {
@@ -44,7 +48,7 @@ let cat1 = new cat('Thomas', 10, 'grey', 'male', 8),
     cat9 = new cat('Spotty', 8, 'spotted', 'male', 6),
     cat10 = new cat('Tiger', 9, 'red', 'male', 4);
 
-
+// удаление таблицы
 const removeTable = () => {
     let el = document.getElementById('tbody');
     el.remove();
@@ -54,6 +58,8 @@ const removeTable = () => {
     table.appendChild(tbody2);
 }
 
+// сортировка таблицы по заданным критериям
+// @param p String ключ свойства объекта, по которому производится сортировка
 const sortTable = (p) => {
     removeTable();
     if (sorted.prop !== p || sorted.state === false) {
@@ -71,7 +77,7 @@ const sortTable = (p) => {
 }
 
 
-
+// создание таблицы
 const createTable = () => {
     for (i = 0; i < catsArray.length; i++) {
         let props = Object.values(catsArray[i]);
@@ -87,7 +93,8 @@ const createTable = () => {
     }
 }
 
-
+// что происходит по нажатию на конкретную кнопку
+// @param e Object кнопка, на которую нажимает пользователь
 const onClick = (e) => {
     let btnId = e.target.id;
     switch (btnId) {
@@ -114,6 +121,8 @@ const onClick = (e) => {
     }
 }
 
+// подсветка отсортированных колонок
+// @param Index Number номер подсвеченной ячейки таблицы
 const highlighter = (index) => {
     let tbody = document.getElementById('tbody');
     for (let j = 0; j < tbody.rows.length; j++) {
@@ -121,6 +130,8 @@ const highlighter = (index) => {
     }
 }
 
+// смена картинки на кнопке
+// @param id String ключ свойства объекта, по которому производится сортировка, src1 String класс объекта, src 2 String класс объекта
 const imgToggle = (id, src1, src2) => {
     let buttons = document.getElementsByTagName('button');
     if (buttons[id].getAttribute('class', src1)) {
@@ -129,6 +140,8 @@ const imgToggle = (id, src1, src2) => {
 
 }
 
+// возврат неактивных кнопок к первоначальной картинке
+// @param nm String ключ свойства объекта, по которому производится сортировка
 const clearButtons = (nm) => {
     let buttons = document.getElementsByTagName('button');
     for (i = 0; i < buttons.length; i++) {
