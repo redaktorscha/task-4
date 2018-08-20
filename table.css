@@ -1,10 +1,5 @@
 body {
   background-color: #fff;
-  /*background-image: url(Cat-paw-printing-md.png);
-  background-size: 150px;
-  background-repeat: no-repeat;
-  background-position: 50px;*/
-  
 }
 
 .container {
@@ -21,21 +16,11 @@ body {
   border-radius: 50%;
   outline: none;
   background-color: #9a9a9a;
-  /*background-image: url(paw_up.png);
-  background-size: 25px 25px;
-  background-repeat: no-repeat;*/
 }
 
 .btn:hover {
   cursor: pointer;
   background-color: #fff;
-  /*background-image: url(paw_up1.png);
-  background-size: 25px 25px;
-  background-repeat: no-repeat;*/
-}
-
-.btn:focus {
-  border-color: rgb(170, 134, 204);
 }
 
 .btn_asc {
@@ -46,7 +31,6 @@ body {
   background-image: url(paw_asc.png);
   background-size: 25px 25px;
   background-repeat: no-repeat;
- 
 }
 
 .btn_desc {
@@ -54,38 +38,37 @@ body {
   height: 30px;
   border-radius: 50%;
   outline: none;
-  background-image: url(paw_desc.png);
+  background-image: url(paw_asc.png);
   background-size: 25px 25px;
   background-repeat: no-repeat;
-  
+  transform: rotate(180deg);
 }
 
 .shadow {
   box-shadow: inset 25px 0px 25px -25px #955097, inset -25px 0px 25px -25px #955097;
-  
 }
 
 tbody tr:hover {
   cursor: pointer;
-  background-color:rgb(214, 175, 204);
+  background-color: rgb(214, 175, 204);
 }
 
 td {
-  border: 0;  
+  border: 0;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
+
+td:nth-child(3n+2) {
+  text-align: center;
 }
 
 table {
-  border-collapse:collapse;
+  border-collapse: collapse;
   text-align: left;
   background-color: #fff;
-  font-family: Bodoni;
-  font-weight: normal;
-}
-
-#thead  {
-  font-family: BodoniMT;
-  font-weight: bold;
-  font-size: 20px;  
 }
 
 .table-header {
