@@ -4,18 +4,16 @@ let sorted = {};
 
 // создает массив из объектов
 // @param cat_name, cat_weight, cat_color, cat_gender, cat_age String/Number свойства объектов
-const cat = function (cat_name, cat_weight, cat_color, cat_gender, cat_age) {
-    this.name = cat_name;
-    this.weight = cat_weight;
-    this.color = cat_color;
-    this.gender = cat_gender;
-    this.age = cat_age;
-    this.toArray = function () {
-        catsArray.push(this)
-    };
-    this.toArray();
+class Cat {
+    constructor(cat_name, cat_weight, cat_color, cat_gender, cat_age) {
+        this.name = cat_name;
+        this.weight = cat_weight;
+        this.color = cat_color;
+        this.gender = cat_gender;
+        this.age = cat_age;
+        catsArray.push(this);
+    }
 }
-
 // сортировка массива по возрастанию
 // @param arr Object сортируемый массив, prop String ключ свойства объекта, по которому производится сортировка
 const propSorting = (arr, prop) => {
@@ -37,16 +35,16 @@ const propRevSorting = (arr, prop) => {
 }
 
 
-let cat1 = new cat('Thomas', 10, 'grey', 'male', 8),
-    cat2 = new cat('Kitty', 5, 'red', 'female', 2),
-    cat3 = new cat('Max', 6, 'white', 'male', 12),
-    cat4 = new cat('Angel', 3, 'black', 'male', 1),
-    cat5 = new cat('Bella', 4, 'white', 'female', 5),
-    cat6 = new cat('Tabby', 7, 'whiskas', 'male', 2),
-    cat7 = new cat('Daisy', 3, 'beige', 'female', 5),
-    cat8 = new cat('Misty', 5, 'grey', 'female', 3),
-    cat9 = new cat('Spotty', 8, 'spotted', 'male', 6),
-    cat10 = new cat('Tiger', 9, 'red', 'male', 4);
+new Cat('Thomas', 10, 'grey', 'male', 8),
+    new Cat('Kitty', 5, 'red', 'female', 2),
+    new Cat('Max', 6, 'white', 'male', 12),
+    new Cat('Angel', 3, 'black', 'male', 1),
+    new Cat('Bella', 4, 'white', 'female', 5),
+    new Cat('Tabby', 7, 'whiskas', 'male', 2),
+    new Cat('Daisy', 3, 'beige', 'female', 5),
+    new Cat('Misty', 5, 'grey', 'female', 3),
+    new Cat('Spotty', 8, 'spotted', 'male', 6),
+    new Cat('Tiger', 9, 'red', 'male', 4);
 
 // удаление таблицы
 const removeTable = () => {
@@ -62,7 +60,7 @@ const removeTable = () => {
 // @param p String ключ свойства объекта, по которому производится сортировка
 const sortTable = (p) => {
     removeTable();
-    if (sorted.prop !== p || sorted.state === false) {
+    if (sorted.prop !== p || !sorted.state) {
         propSorting(catsArray, p);
         imgToggle(p, 'btn', 'btn_asc');
         sorted.state = true;
@@ -83,7 +81,7 @@ const createTable = () => {
         let props = Object.values(catsArray[i]);
         let tbody = document.getElementById('tbody');
         let row = document.createElement('tr');
-        for (k = 0; k < 5; k++) {
+        for (k = 0; k < props.length; k++) {
             let cell = document.createElement('td');
             let text = document.createTextNode(props[k]);
             cell.appendChild(text);
@@ -93,42 +91,30 @@ const createTable = () => {
     }
 }
 
-// что происходит по нажатию на конкретную кнопку
+// что происходит по нажатии на конкретную кнопку
 // @param e Object кнопка, на которую нажимает пользователь
 const onClick = (e) => {
-    let btnId = e.target.id;
-    switch (btnId) {
-        case 'name':
-            sortTable('name');
-            highlighter(0);            
-            break;
-        case 'weight':
-            sortTable('weight');
-            highlighter(1);
-            break;
-        case 'color':
-            sortTable('color');
-            highlighter(2);
-            break;
-        case 'gender':
-            sortTable('gender');
-            highlighter(3);
-            break;
-        case 'age':
-            sortTable('age');
-            highlighter(4);
-            break;
+        if (e.target.id !== "") {
+        sortTable(e.target.id);
+        highlighter(getHeaderIndex(e));
     }
 }
 
 // подсветка отсортированных колонок
-// @param Index Number номер подсвеченной ячейки таблицы
+// @param index Number номер подсвеченной ячейки таблицы
 const highlighter = (index) => {
     let tbody = document.getElementById('tbody');
     for (let j = 0; j < tbody.rows.length; j++) {
         tbody.rows[j].cells[index].setAttribute('class', 'shadow');
     }
 }
+
+// поиск номера ячейки таблицы, которую нужно подсветить
+// @param el Object кнопка, на которую нажимает пользователь
+const getHeaderIndex = (el) => {
+    return el.target.closest('th').cellIndex;
+}
+
 
 // смена картинки на кнопке
 // @param id String ключ свойства объекта, по которому производится сортировка, src1 String класс объекта, src 2 String класс объекта
@@ -157,4 +143,3 @@ thead.addEventListener('click', onClick);
 
 
 createTable();
-
