@@ -1,0 +1,36 @@
+$bg_color: #fff;
+$color: white;
+$bradius: 50%;
+$image_dir: '../imgs/';
+$font: Bodoni;
+$fsize: 24px;
+$bwidth: 30px;
+$bheight: $bwidth;
+$cursor: pointer;
+@import 'button', 'table', 'font';
+
+body {
+    background-color: $bg_color;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+
+        .table-header {
+            font-family: Bodoni;
+            font-weight: bold;
+            font-style: italic;
+            display: flex;
+            padding: 24px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: $fsize;
+            color: $color;
+            text-shadow: -1px -1px 1px #361e36;
+            color: #9a9a9a;
+        }
+    }
+}

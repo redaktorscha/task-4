@@ -1,3 +1,15 @@
+body {
+  background-color: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
 .btn {
   width: 30px;
   height: 30px;
@@ -5,6 +17,7 @@
   outline: none;
   background-color: #9a9a9a;
 }
+
 .btn:hover {
   cursor: pointer;
   background-color: #fff;
@@ -15,7 +28,7 @@
   height: 30px;
   border-radius: 50%;
   outline: none;
-  background-image: url("../imgs/paw_asc.png");
+  background-image: url(../imgs/paw_asc.png);
   background-size: 25px 25px;
   background-repeat: no-repeat;
 }
@@ -25,10 +38,31 @@
   height: 30px;
   border-radius: 50%;
   outline: none;
-  background-image: url("../imgs/paw_asc.png");
+  background-image: url(../imgs/paw_asc.png);
   background-size: 25px 25px;
   background-repeat: no-repeat;
   transform: rotate(180deg);
+}
+
+.shadow {
+  box-shadow: inset 25px 0px 25px -25px #955097, inset -25px 0px 25px -25px #955097;
+}
+
+tbody tr:hover {
+  cursor: pointer;
+  background-color: rgb(214, 175, 204);
+}
+
+td {
+  border: 0;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
+
+td:nth-child(3n+2) {
+  text-align: center;
 }
 
 table {
@@ -36,39 +70,8 @@ table {
   text-align: left;
   background-color: #fff;
 }
-table tbody tr:hover {
-  cursor: pointer;
-  background-color: #d6afcc;
-}
-table tbody tr:nth-child(even) {
-  background-color: #eee;
-}
-table tbody tr td {
-  border: 0;
-}
-table tbody tr td:nth-child(3n+2) {
-  text-align: center;
-}
 
-.shadow {
-  box-shadow: inset 25px 0px 25px -25px #955097, inset -25px 0px 25px -25px #955097;
-}
-
-@font-face {
-  font-family: "Bodoni";
-  src: url("fonts/BOD_BI.TTF.ttf") format("truetype");
-}
-body {
-  background-color: #fff;
-}
-body .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-}
-body .container .table-header {
+.table-header {
   font-family: Bodoni;
   font-weight: bold;
   font-style: italic;
@@ -82,4 +85,7 @@ body .container .table-header {
   color: #9a9a9a;
 }
 
-/*# sourceMappingURL=main.css.map */
+@font-face {
+  font-family: "Bodoni";
+  src: url('fonts/BOD_BI.TTF.ttf')format('truetype');
+}

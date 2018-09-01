@@ -1,0 +1,30 @@
+table {
+    border-collapse: collapse;
+    text-align: left;
+    background-color: $bg_color;
+
+    tbody {
+        tr {
+            &:hover {
+                cursor: $cursor;
+                background-color: rgb(214, 175, 204);
+            }
+
+            &:nth-child(even) {
+                background-color: #eee;
+            }
+
+            td {
+                border: 0;
+
+                &:nth-child(3n+2) {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+.shadow {
+    box-shadow: inset 25px 0px 25px -25px #955097, inset -25px 0px 25px -25px #955097;
+}

@@ -1,0 +1,32 @@
+
+@mixin bt {
+    width: 30px;
+    height: 30px;
+    border-radius: $bradius;
+    outline: none;
+    background-image: url($image_dir + 'paw_asc.png');
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+}
+
+.btn {
+    width: $bwidth;
+    height: $bheight;
+    border-radius: $bradius;
+    outline: none;
+    background-color: #9a9a9a;
+
+    &:hover {
+        cursor: $cursor;
+        background-color: $bg_color;
+    }
+}
+
+.btn_asc {
+    @include bt;
+}
+
+.btn_desc {
+    @include bt;
+    transform: rotate(180deg);
+}
