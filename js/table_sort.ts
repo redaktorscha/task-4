@@ -1,22 +1,36 @@
-let catsArray = [];
-let sorted = {};
+let catsArray: Array<Object> = [];
 
+let sorted = {
+    state: <boolean> null,
+    prop: <string> null,
+};
+
+interface ICat {
+    name: string;
+    weight: number;
+    color: string;
+    gender: string;
+    age: number;    
+}
 
 // создает массив из объектов
-// @param cat_name, cat_weight, cat_color, cat_gender, cat_age String/Number свойства объектов
-class Cat {
-    constructor(cat_name, cat_weight, cat_color, cat_gender, cat_age) {
-        this.name = cat_name;
-        this.weight = cat_weight;
-        this.color = cat_color;
-        this.gender = cat_gender;
-        this.age = cat_age;
+class Cat implements ICat{
+    name: string;
+    weight: number;
+    color: string;
+    gender: string;
+    age: number;
+    constructor(name: string, weight: number, color: string, gender: string, age: number) {
+        this.name = name;
+        this.weight = weight;
+        this.color = color;
+        this.gender = gender;
+        this.age = age;
         catsArray.push(this);
     }
 }
 // сортировка массива по возрастанию
-// @param arr Object сортируемый массив, prop String ключ свойства объекта, по которому производится сортировка
-const propSorting = (arr, prop) => {
+const propSorting = (arr: any[], prop: string) => {
     arr.sort(
         function (x, y) {
             return x[prop] > y[prop] ? 1 : x[prop] < y[prop] ? -1 : 0;
@@ -25,8 +39,7 @@ const propSorting = (arr, prop) => {
 }
 
 // сортировка массива по убыванию
-// @param arr Object сортируемый массив, prop String ключ свойства объекта, по которому производится сортировка
-const propRevSorting = (arr, prop) => {
+const propRevSorting = (arr: any[], prop: string) => {
     arr.sort(
         function (a, b) {
             return b[prop] > a[prop] ? 1 : b[prop] < a[prop] ? -1 : 0;
@@ -57,16 +70,15 @@ const removeTable = () => {
 }
 
 // сортировка таблицы по заданным критериям
-// @param p String ключ свойства объекта, по которому производится сортировка
 const sortTable = (p) => {
     removeTable();
     if (sorted.prop !== p || !sorted.state) {
         propSorting(catsArray, p);
-        imgToggle(p, 'btn', 'btn_asc');
+        imgToggle(p, 'btn_asc');
         sorted.state = true;
     } else {
         propRevSorting(catsArray, p);
-        imgToggle(p, 'btn_asc', 'btn_desc');
+        imgToggle(p, 'btn_desc');
         sorted.state = false;
     }
     sorted.prop = p;
@@ -77,11 +89,11 @@ const sortTable = (p) => {
 
 // создание таблицы
 const createTable = () => {
-    for (i = 0; i < catsArray.length; i++) {
-        let props = Object.values(catsArray[i]);
-        let tbody = document.getElementById('tbody');
+    for (let i = 0; i < catsArray.length; i++) {
+        let props = (<any>Object).values(catsArray[i]);
+        let tbody = (<HTMLTableElement>document.getElementById('tbody'));
         let row = document.createElement('tr');
-        for (k = 0; k < props.length; k++) {
+        for (let k = 0; k < props.length; k++) {
             let cell = document.createElement('td');
             let text = document.createTextNode(props[k]);
             cell.appendChild(text);
@@ -92,8 +104,7 @@ const createTable = () => {
 }
 
 // что происходит по нажатии на конкретную кнопку
-// @param e Object кнопка, на которую нажимает пользователь
-const onClick = (e) => {
+const onClick = (e: any) => {
         if (e.target.id !== "") {
         sortTable(e.target.id);
         highlighter(getHeaderIndex(e));
@@ -101,36 +112,29 @@ const onClick = (e) => {
 }
 
 // подсветка отсортированных колонок
-// @param index Number номер подсвеченной ячейки таблицы
-const highlighter = (index) => {
-    let tbody = document.getElementById('tbody');
+const highlighter = (index: number) => {
+    let tbody = (<HTMLTableElement>document.getElementById('tbody'));
     for (let j = 0; j < tbody.rows.length; j++) {
         tbody.rows[j].cells[index].setAttribute('class', 'shadow');
     }
 }
 
 // поиск номера ячейки таблицы, которую нужно подсветить
-// @param el Object кнопка, на которую нажимает пользователь
-const getHeaderIndex = (el) => {
+const getHeaderIndex = (el: any) => {
     return el.target.closest('th').cellIndex;
 }
 
 
 // смена картинки на кнопке
-// @param id String ключ свойства объекта, по которому производится сортировка, src1 String класс объекта, src 2 String класс объекта
-const imgToggle = (id, src1, src2) => {
+const imgToggle = (id: number, src: string) => {
     let buttons = document.getElementsByTagName('button');
-    if (buttons[id].getAttribute('class', src1)) {
-        buttons[id].setAttribute('class', src2)
+    buttons[id].classList.toggle(src);
     };
 
-}
-
 // возврат неактивных кнопок к первоначальной картинке
-// @param nm String ключ свойства объекта, по которому производится сортировка
-const clearButtons = (nm) => {
+const clearButtons = (nm: string) => {
     let buttons = document.getElementsByTagName('button');
-    for (i = 0; i < buttons.length; i++) {
+    for (let i = 0; i < buttons.length; i++) {
         if (buttons[i].id !== nm) {
             buttons[i].setAttribute('class', 'btn');
         }

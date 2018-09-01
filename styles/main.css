@@ -28,7 +28,7 @@ body {
   height: 30px;
   border-radius: 50%;
   outline: none;
-  background-image: url(paw_asc.png);
+  background-image: url(../imgs/paw_asc.png);
   background-size: 25px 25px;
   background-repeat: no-repeat;
 }
@@ -38,7 +38,7 @@ body {
   height: 30px;
   border-radius: 50%;
   outline: none;
-  background-image: url(paw_asc.png);
+  background-image: url(../imgs/paw_asc.png);
   background-size: 25px 25px;
   background-repeat: no-repeat;
   transform: rotate(180deg);
@@ -87,5 +87,5 @@ table {
 
 @font-face {
   font-family: "Bodoni";
-  src: url('BodoniMT.ttf')format('truetype'), url('BOD_BI.TTF.ttf')format('truetype'), url('BOD_B.ttf')format('truetype'), url('BOD_I.ttf')format('truetype');
+  src: url('fonts/BOD_BI.TTF.ttf')format('truetype');
 }
