@@ -1,11 +1,13 @@
 var catsArray = [];
-var sorted = {
-    state: null,
-    prop: null
-};
+var sorted = {};
 // создает массив из объектов
 var Cat = /** @class */ (function () {
     function Cat(name, weight, color, gender, age) {
+        this.name = name;
+        this.weight = weight;
+        this.color = color;
+        this.gender = gender;
+        this.age = age;
         this.name = name;
         this.weight = weight;
         this.color = color;
@@ -80,7 +82,7 @@ var createTable = function () {
 };
 // что происходит по нажатии на конкретную кнопку
 var onClick = function (e) {
-    if (e.target.id !== "") {
+    if (e.target.id) {
         sortTable(e.target.id);
         highlighter(getHeaderIndex(e));
     }
@@ -111,5 +113,7 @@ var clearButtons = function (nm) {
     }
 };
 var thead = document.querySelector('#thead');
-thead.addEventListener('click', onClick);
+thead.addEventListener('click', function (e) {
+    onClick(e);
+});
 createTable();
