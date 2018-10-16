@@ -1,7 +1,6 @@
 {
   "name": "task-4",
   "version": "1.0.0",
-  "description": "",
   "main": "table_sort.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/redaktorscha/task-4/issues"
   },
-  "homepage": "https://github.com/redaktorscha/task-4#readme"
+  "homepage": "https://github.com/redaktorscha/task-4#readme",
+  "description": "",
+  "devDependencies": {
+    "typescript": "^3.1.3"
+  }
 }

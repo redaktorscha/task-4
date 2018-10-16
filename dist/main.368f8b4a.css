@@ -1,0 +1,70 @@
+.btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  outline: none;
+  background-color: #9a9a9a; }
+  .btn:hover {
+    cursor: pointer;
+    background-color: #fff; }
+
+.btn_asc {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  outline: none;
+  background-image: url("paw_asc.63fd25cd.png");
+  background-size: 25px 25px;
+  background-repeat: no-repeat; }
+
+.btn_desc {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  outline: none;
+  background-image: url("paw_asc.63fd25cd.png");
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  transform: rotate(180deg); }
+
+.table_main {
+  border-collapse: collapse;
+  text-align: left;
+  background-color: #fff; }
+  .table_main tbody tr:hover {
+    cursor: pointer;
+    background-color: #d6afcc; }
+  .table_main tbody tr:nth-child(even) {
+    background-color: #eee; }
+  .table_main tbody tr td {
+    border: 0; }
+    .table_main tbody tr td:nth-child(3n+2) {
+      text-align: center; }
+
+.shadow {
+  box-shadow: inset 25px 0px 25px -25px #955097, inset -25px 0px 25px -25px #955097; }
+
+@font-face {
+  font-family: "Bodoni";
+  src: url("BOD_BI.68c83dfd.ttf") format("truetype"); }
+
+body {
+  background-color: #fff; }
+  body .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px; }
+    body .container .table-header {
+      font-family: Bodoni;
+      font-weight: bold;
+      font-style: italic;
+      display: flex;
+      padding: 24px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 24px;
+      color: white;
+      text-shadow: -1px -1px 1px #361e36;
+      color: #9a9a9a; }
