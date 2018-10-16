@@ -103,73 +103,130 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({"..\\..\\..\\..\\AppData\\Roaming\\npm\\node_modules\\parcel-bundler\\src\\builtins\\bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
-    if (matches) {
-      return getBaseURL(matches[0]);
+})({"js\\table.js":[function(require,module,exports) {
+var catsArray = [];
+var sorted = {};
+// создает массив из объектов
+var Cat = /** @class */function () {
+    function Cat(name, weight, color, gender, age) {
+        this.name = name;
+        this.weight = weight;
+        this.color = color;
+        this.gender = gender;
+        this.age = age;
+        catsArray.push(this);
     }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"..\\..\\..\\..\\AppData\\Roaming\\npm\\node_modules\\parcel-bundler\\src\\builtins\\css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-  newLink.onload = function () {
-    link.remove();
-  };
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
+    return Cat;
+}();
+new Cat('Thomas', 10, 'grey', 'male', 8);
+new Cat('Kitty', 5, 'red', 'female', 2);
+new Cat('Max', 6, 'white', 'male', 12);
+new Cat('Angel', 3, 'black', 'male', 1);
+new Cat('Bella', 4, 'white', 'female', 5);
+new Cat('Tabby', 7, 'whiskas', 'male', 2);
+new Cat('Daisy', 3, 'beige', 'female', 5);
+new Cat('Misty', 5, 'grey', 'female', 3);
+new Cat('Spotty', 8, 'spotted', 'male', 6);
+new Cat('Tiger', 9, 'red', 'male', 4);
+// создание таблицы
+var createTable = function createTable(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        var tbody = document.getElementById('tbody');
+        var row = document.createElement('tr');
+        for (var prop in arr[i]) {
+            var value = arr[i][prop].toString();
+            var cell = document.createElement('td');
+            var text = document.createTextNode(value);
+            cell.appendChild(text);
+            row.appendChild(cell);
+        }
+        tbody.appendChild(row);
     }
-
-    cssTimeout = null;
-  }, 50);
+};
+// удаление таблицы
+var removeTable = function removeTable() {
+    var el = document.getElementById('tbody');
+    if (el) {
+        el.remove();
+    }
+    var tbody2 = document.createElement('tbody');
+    tbody2.setAttribute('id', 'tbody');
+    var table = document.querySelector('#table');
+    if (table) {
+        table.appendChild(tbody2);
+    }
+};
+// сортировка массива по возрастанию
+var propSorting = function propSorting(arr, prop) {
+    arr.sort(function (x, y) {
+        return x[prop] > y[prop] ? 1 : x[prop] < y[prop] ? -1 : 0;
+    });
+};
+// сортировка массива по убыванию
+var propRevSorting = function propRevSorting(arr, prop) {
+    arr.sort(function (a, b) {
+        return b[prop] > a[prop] ? 1 : b[prop] < a[prop] ? -1 : 0;
+    });
+};
+// смена картинки на кнопке
+var imgToggle = function imgToggle(id, src) {
+    var button = document.getElementById(id);
+    if (button) {
+        button.classList.toggle(src);
+    }
+};
+// возврат неактивных кнопок к первоначальной картинке
+var clearButtons = function clearButtons(nm) {
+    var buttons = document.getElementsByTagName('button');
+    for (var i = 0; i < buttons.length; i++) {
+        if (buttons[i].id !== nm) {
+            buttons[i].setAttribute('class', 'btn');
+        }
+    }
+};
+// поиск номера ячейки таблицы, которую нужно подсветить
+var getHeaderIndex = function getHeaderIndex(e) {
+    var closest = e.target.closest('th');
+    return closest ? closest.cellIndex : -1;
+};
+// подсветка отсортированных колонок
+var highlighter = function highlighter(index) {
+    var tbody = document.getElementById('tbody');
+    for (var j = 0; j < tbody.rows.length; j++) {
+        tbody.rows[j].cells[index].setAttribute('class', 'shadow');
+    }
+};
+// сортировка таблицы по заданным критериям
+var sortTable = function sortTable(p) {
+    removeTable();
+    if (sorted.prop !== p || !sorted.state) {
+        propSorting(catsArray, p);
+        imgToggle(p, 'btn_asc');
+        sorted.state = true;
+    } else {
+        propRevSorting(catsArray, p);
+        imgToggle(p, 'btn_desc');
+        sorted.state = false;
+    }
+    sorted.prop = p;
+    createTable(catsArray);
+    clearButtons(p);
+};
+// что происходит по нажатии на конкретную кнопку
+var onClick = function onClick(e) {
+    if (e.target.id) {
+        sortTable(e.target.id);
+        highlighter(getHeaderIndex(e));
+    }
+};
+var thead = document.querySelector('#thead');
+if (thead) {
+    thead.addEventListener('click', function (e) {
+        onClick(e);
+    });
 }
-
-module.exports = reloadCSS;
-},{"./bundle-url":"..\\..\\..\\..\\AppData\\Roaming\\npm\\node_modules\\parcel-bundler\\src\\builtins\\bundle-url.js"}],"styles\\main.scss":[function(require,module,exports) {
-
-var reloadCSS = require('_css_loader');
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"./..\\imgs\\paw_asc.png":[["paw_asc.63fd25cd.png","imgs\\paw_asc.png"],"imgs\\paw_asc.png"],"./..\\fonts\\BOD_BI.ttf":[["BOD_BI.68c83dfd.ttf","fonts\\BOD_BI.ttf"],"fonts\\BOD_BI.ttf"],"_css_loader":"..\\..\\..\\..\\AppData\\Roaming\\npm\\node_modules\\parcel-bundler\\src\\builtins\\css-loader.js"}],"..\\..\\..\\..\\AppData\\Roaming\\npm\\node_modules\\parcel-bundler\\src\\builtins\\hmr-runtime.js":[function(require,module,exports) {
+createTable(catsArray);
+},{}],"..\\..\\..\\..\\AppData\\Roaming\\npm\\node_modules\\parcel-bundler\\src\\builtins\\hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 
@@ -339,4 +396,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},["..\\..\\..\\..\\AppData\\Roaming\\npm\\node_modules\\parcel-bundler\\src\\builtins\\hmr-runtime.js"], null)
+},{}]},{},["..\\..\\..\\..\\AppData\\Roaming\\npm\\node_modules\\parcel-bundler\\src\\builtins\\hmr-runtime.js","js\\table.js"], null)
+//# sourceMappingURL=/table.3437d5c4.map

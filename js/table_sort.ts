@@ -73,4 +73,5 @@ if (thead) {
     onClick(e)
   });
 }
+
 createTable(catsArray);
